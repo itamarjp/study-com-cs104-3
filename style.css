@@ -1,0 +1,119 @@
+/* style.css - atualizado para navbar fixa e menu responsivo correto */
+
+/* General */
+body {
+  font-family: 'Lato', Arial, sans-serif;
+  background: #fff;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  /* Espaço para a navbar fixa */
+  padding-top: 96px;
+}
+
+.footer {
+  flex-shrink: 0;
+  font-size: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+/* Logo home */
+.home-logo {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Menu responsivo fixo logo abaixo da navbar */
+#navLinksSmall {
+  position: absolute;
+  top: 80px; /* ajuste conforme altura real da navbar */
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+@media (min-width: 993px) {
+  #navLinksSmall {
+    position: static;
+    box-shadow: none;
+  }
+}
+
+/* Garante que os itens do menu responsivo ocupem toda a largura */
+#navLinksSmall .w3-bar-item {
+  display: block;
+  width: 100%;
+}
+
+/* WhatsApp */
+.whatsapp-link {
+  color: #128C7E;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.whatsapp-link:hover {
+  text-decoration: underline;
+}
+.whatsapp-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.whatsapp-qr-link img {
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+  height: 120px;
+}
+
+/* Responsividade logo home */
+@media (max-width: 640px) {
+  .home-logo {
+    max-width: 90px;
+  }
+}
+
+/* Remove outline/border do main-content ao focar */
+#main-content:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+/* Services */
+.services-list {
+  display: inline-block;
+  text-align: left;
+  font-size: 1.25rem; /* similar to w3-large */
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.services-list li {
+  margin-bottom: 1rem;
+}
