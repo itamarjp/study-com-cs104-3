@@ -105,15 +105,23 @@ main {
   border: none;
 }
 
-/* Services */
-.services-list {
-  display: inline-block;
-  text-align: left;
-  font-size: 1.25rem; /* similar to w3-large */
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
+/* Modal image gallery adjustments */
+.w3-modal-content {
+  position: relative;
+  max-width: 700px;
+  margin: auto;
 }
-.services-list li {
-  margin-bottom: 1rem;
+
+.w3-modal-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.w3-modal-content .w3-display-topright {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
 }
