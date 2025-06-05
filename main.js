@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
               setupNavToggle();
               setupNavLinks('#navLinks a.nav-link');
               setupNavLinks('#navLinksSmall a.nav-link');
+              // CHAMA A VALIDAÇÃO AQUI
+              setupContactFormValidation();
             });
         }
       });
@@ -59,3 +61,74 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
+
+function setupContactFormValidation() {
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.onsubmit = function(event) {
+      event.preventDefault();
+      var valid = true;
+      var name = document.getElementById('name');
+      var email = document.getElementById('email');
+      var message = document.getElementById('message');
+      var feedback = document.getElementById('formFeedback');
+      feedback.innerHTML = '';
+      name.classList.remove('w3-border-red');
+      email.classList.remove('w3-border-red');
+      message.classList.remove('w3-border-red');
+
+      if (!name.value.trim()) {
+        name.classList.add('w3-border-red');
+        valid = false;
+      }
+      if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.classList.add('w3-border-red');
+        valid = false;
+      }
+      if (!message.value.trim()) {
+        message.classList.add('w3-border-red');
+        valid = false;
+      }
+
+      if (!valid) {
+        feedback.innerHTML = '<div class="w3-panel w3-red">Please fill out all required fields correctly.</div>';
+      } else {
+        feedback.innerHTML = '<div class="w3-panel w3-green">Message sent successfully!</div>';
+        contactForm.reset();
+      }
+    };
+  }
+}
+
+function openModal(img) {
+  document.getElementById('imgModal').style.display = 'block';
+  document.getElementById('modalImg').src = img.src;
+  document.getElementById('modalCaption').innerText = img.alt;
+}
+
+function closeModal() {
+  document.getElementById('imgModal').style.display = 'none';
+}
+
+// Prevent modal from closing when clicking on the image itself
+window.onload = function() {
+  var modalImg = document.getElementById('modalImg');
+  if (modalImg) {
+    modalImg.onclick = function(event) {
+      event.stopPropagation();
+    }
+  }
+}
+
+function accordionToggle(id) {
+  var x = document.getElementById(id);
+  if (x) {
+    if (x.classList.contains("w3-show")) {
+      x.classList.remove("w3-show");
+      x.classList.add("w3-hide");
+    } else {
+      x.classList.remove("w3-hide");
+      x.classList.add("w3-show");
+    }
+  }
+}
